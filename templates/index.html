@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Github Profile Images</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Github Profile Images</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="images">Images</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="logout">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Welcome, {{user.username}}</h1>
+        <h1 class="mt-5">Add New Profile Image</h1>
+        <div>
+            <style>
+              h2{
+                padding-bottom: 10px;
+                color: green;
+              }
+            </style>
+            {% for message in messages %}
+            <h2>{{message}}</h2>
+            {% endfor %}
+          </div>
+        <!--<p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
+        <ul class="list-unstyled">
+          <li>Bootstrap 4.5.3</li>
+          <li>jQuery 3.5.1</li>
+        </ul>-->
+      </div>
+    </div>
+  </div>
+
+<div class="container">
+  <!--<h2>Login</h2>-->
+  <form method="POST" action="/">
+    {% csrf_token %}
+    <div class="github_user">
+      <label for="github_user">Github Username:</label>
+      <input type="text" class="form-control" id="github_user" placeholder="Enter Github Username" name="github_user">
+      <input type="hidden" class="form-control" id="user" value="{{user.username}}" name="user">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+  <!-- Bootstrap core JavaScript -->
+  <script src="{% static 'vendor/jquery/jquery.slim.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
